@@ -2,12 +2,12 @@
 
 This is a tool for editors that automatically edits video game montages based off eliminations, knocks, wins, or punches. It can also remove silent portions and add automatic captions to your video file with a simple GUI.
 
-# `FOR REGULAR USAGE`
+# `FOR REGULAR USAGE:`
 
 ## Demo for Silent Portions and Automatic Captions
 ![](example.gif)
 
-# `FOR DEVELOPER USAGE`
+# `FOR DEVELOPER USAGE:`
 
 Run editorGUI.py, which programmatically references the other files or [download the EXE](https://github.com/Noah-Grimaldi/automatic-video-editing/releases/download/pyinstaller/automatic-video-editing.exe) (The EXE is currently only for Windows).
 
