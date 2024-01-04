@@ -24,13 +24,21 @@ For [editVideo.py](packagefiles/editVideo.py):
 - *skip_frames*: 2-100 frames ability to adjust in order to have cv2 skip through the video faster with less precision.
 - *effects_bool*: 'yes' or 'no' dropdown which can turn off or on video editing effects not including intro clip
 
-For [video-remove-silence](packagefiles/video_remove_silence.py): 
+For [video-remove-silence](packagefiles/video_remove_silence.py):
 
-adjust_silence_threshold is the decibal threshold that video-remove-silence considers as "silence." (avg. -40 or -50)
+- *video_file*: path to video selected video file
+- *output2*: path to selected video output
+- *-THRESHOLD-*: the decibal threshold that video-remove-silence considers as "silence." (avg. -40 or -50)
 
-For [video_transcribe_audio.py](packagefiles/video_transcribe_audio.py): 
+For [video_transcribe_audio.py](packagefiles/video_transcribe_audio.py):
 
-model_size can be tiny, base, small, medium, large; text_color (e.g. white); font (e.g. Arial-Black or ''); position (e.g. ('center', 'bottom')); text_size (e.g. 80.0)
+- *video_file*: path to video selected video file
+- *output2*: path to selected video output
+- *dropdown_option*: WhisperAI model for tiny, base, small, medium, or large.
+- *dropdown_option2*: text color (e.g. white)
+- *dropdown_option3*: font (e.g. Arial-Black or '')
+- *dropdown_option4*: position (e.g. ('center', 'bottom'))
+- *-SIZE-*: text size (e.g. 80.0)
 
 ## Dependencies
 `pip install -r requirements.txt`
