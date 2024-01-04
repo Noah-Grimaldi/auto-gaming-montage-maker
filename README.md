@@ -2,6 +2,10 @@
 
 This is a tool for editors that automatically edits video game montages based off eliminations, knocks, wins, or punches. It can also remove silent portions and add automatic captions to your video file with a simple GUI.
 
+# `FOR REGULAR USAGE`
+
+# `FOR DEVELOPER USAGE`
+
 ## Demo for Silent Portions and Automatic Captions
 ![](example.gif)
 
