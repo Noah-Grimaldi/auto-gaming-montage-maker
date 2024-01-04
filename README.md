@@ -25,7 +25,7 @@ model_size can be tiny, base, small, medium, large; text_color (e.g. white); fon
 `pip install -r requirements.txt`
 - Python 3.5+ download(s): [Windows](https://www.python.org/ftp/python/3.12.0/python-3.12.0-amd64.exe)/[Mac](https://www.python.org/ftp/python/3.12.0/python-3.12.0-macos11.pkg)/[Linux](https://www.python.org/ftp/python/3.12.0/Python-3.12.0.tar.xz) or [More Options](https://www.python.org/downloads/)
 - FFmpeg download(s): [Windows](https://community.chocolatey.org/packages/ffmpeg)/[Mac](https://formulae.brew.sh/formula/ffmpeg)/[Linux](https://www.geeksforgeeks.org/how-to-install-ffmpeg-in-linux/) or [More Options](https://www.ffmpeg.org/download.html)
-- tesseract OCR: [Windows](https://github.com/tesseract-ocr/tesseract?tab=readme-ov-file#installing-tesseract)/[Mac](https://formulae.brew.sh/formula/tesseract)/[Linux](https://tesseract-ocr.github.io/tessdoc/Installation.html) or [More Options](https://tesseract-ocr.github.io/tessdoc/Installation.html)
+- Google Tesseract OCR download(s): [Windows](https://github.com/tesseract-ocr/tesseract?tab=readme-ov-file#installing-tesseract)/[Mac](https://formulae.brew.sh/formula/tesseract)/[Linux](https://tesseract-ocr.github.io/tessdoc/Installation.html) or [More Options](https://tesseract-ocr.github.io/tessdoc/Installation.html)
 
 ## Platform Support 
 Windows/Mac/Linux
