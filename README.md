@@ -13,11 +13,11 @@ Run editorGUI.py, which programmatically references the other files or [download
 
 **If you want to run the argparse files individually:**
 
-For [video-remove-silence](video-remove-silence): 
+For [video-remove-silence](packagefiles/video-remove-silence): 
 
 adjust_silence_threshold is the decibal threshold that video-remove-silence considers as "silence." (avg. -40 or -50)
 
-For [video_transcribe_audio.py](video_transcribe_audio.py): 
+For [video_transcribe_audio.py](packagefiles/video_transcribe_audio.py): 
 
 model_size can be tiny, base, small, medium, large; text_color (e.g. white); font (e.g. Arial-Black or ''); position (e.g. ('center', 'bottom')); text_size (e.g. 80.0)
 
