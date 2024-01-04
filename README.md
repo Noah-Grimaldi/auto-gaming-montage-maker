@@ -15,21 +15,14 @@ Run editorGUI.py, which programmatically references the other files or [download
 
 For [editVideo.py](packagefiles/editVideo.py): 
 
-*video_file* options: path to video selected video file
-
-*output2* options: path to selected video output 
-
-*dropdown_audio* options: the default_audio directory, other (any music of your choice), and none.
-
-*title_text* options: True or False, (leave input blank for no intro clip)
-
-*which_game* options: CSGO, MW3 gun game, MW3 kill confirmed, MW3 free-for-all, Fortnite, Apex Legends, Valorant, Overwatch, Warzone 2.0+, Rocket League, Minecraft (PVP Server).
-
-*music_volume* options: 0-200% adjustment for chosen music, or nothing if "none" selected.
-
-*skip_frames* options: 2-100 frames ability to adjust in order to have cv2 skip through the video faster with less precision.
-
-*effects_bool* options: 'yes' or 'no' dropdown which can turn off or on video editing effects not including intro clip
+  *video_file*: path to video selected video file
+  *output2*: path to selected video output 
+  *dropdown_audio*: the default_audio directory, other (any music of your choice), and none.
+  *title_text*: True or False, (leave input blank for no intro clip)
+  *which_game*: CSGO, MW3 gun game, MW3 kill confirmed, MW3 free-for-all, Fortnite, Apex Legends, Valorant, Overwatch, Warzone 2.0+, Rocket League, Minecraft (PVP Server).
+  *music_volume*: 0-200% adjustment for chosen music, or nothing if "none" selected.
+  *skip_frames*: 2-100 frames ability to adjust in order to have cv2 skip through the video faster with less precision.
+  *effects_bool*: 'yes' or 'no' dropdown which can turn off or on video editing effects not including intro clip
 
 For [video-remove-silence](packagefiles/video_remove_silence.py): 
 
