@@ -4,6 +4,10 @@ This is a tool for editors that automatically edits video game montages based of
 
 # `FOR REGULAR USAGE:`
 
+## Simple Instruction
+
+## Table for different game's model speed and accuracy
+
 ## Demo for Silent Portions and Automatic Captions
 ![](example.gif)
 
