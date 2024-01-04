@@ -314,12 +314,6 @@ def auto_game_montage(*args):
                 combined_audio2 = combined_audio2.audio_fadeout(0.4)
             final_clip = final_clip.set_audio(combined_audio2)
         else:
-            # if audio_clip.duration < final_clip.duration:
-            #     print("audio clip is less than final clip")
-            #     while audio_clip.duration < final_clip.duration:
-            #         audio_clip = concatenate_audioclips([audio_clip, audio_clip])
-            #     audio_clip = audio_clip.volumex(music_volume)  # TODO: user should be able to adjust this 1
-            # else:
             concatenated_audio = concatenate_audioclips(audio_clips_list)
             while concatenated_audio.duration < final_clip.duration:
                 concatenated_audio = concatenate_audioclips([concatenated_audio, concatenated_audio])
