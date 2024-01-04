@@ -13,7 +13,7 @@ Run editorGUI.py, which programmatically references the other files or [download
 
 **Options explained for threaded methods:**
 
-For [video-remove-silence](packagefiles/video-remove-silence.py): 
+For [video-remove-silence](packagefiles/video_remove_silence.py): 
 
 adjust_silence_threshold is the decibal threshold that video-remove-silence considers as "silence." (avg. -40 or -50)
 
