@@ -15,17 +15,9 @@ Run editorGUI.py, which programmatically references the other files or [download
 
 For [video-remove-silence](video-remove-silence): 
 
-```
-python video-remove-silence video_file output_directory adjust_silence_threshold
-```
-
 adjust_silence_threshold is the decibal threshold that video-remove-silence considers as "silence." (avg. -40 or -50)
 
 For [video_transcribe_audio.py](video_transcribe_audio.py): 
-
-```
-python video_transcribe_audio.py video_file 'True' output_directory model_size text_color font position text_size
-```
 
 model_size can be tiny, base, small, medium, large; text_color (e.g. white); font (e.g. Arial-Black or ''); position (e.g. ('center', 'bottom')); text_size (e.g. 80.0)
 
