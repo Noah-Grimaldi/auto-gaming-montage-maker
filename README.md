@@ -1,4 +1,5 @@
-# `Automatic Video Editing (auto-montage, auto-silence-removal, and auto-captions)`
+# `Automatic Video Editing 
+# (auto-game-montage, auto-silence-removal, and auto-captions)`
 
 Tool for removing silence from video files.
 
