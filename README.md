@@ -10,6 +10,8 @@ This is a tool for editors that automatically edits video game montages based of
 
 ## Table for different game's model speed and accuracy
 
+## Demo for auto gaming montage
+
 ## Demo for Silent Portions and Automatic Captions
 ![](example.gif)
 
