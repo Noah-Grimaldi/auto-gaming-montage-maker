@@ -47,9 +47,9 @@ def create_intro_text_clip(text):
 
 
 def auto_game_montage(*args):
-    global path_to_video, amount_frames_to_skip, detections, start, end
+    global path_to_video, amount_frames_to_skip, detections, start, end, read_screen_bool, model_path, threshold
     music_volume = args[3] / 100
-    if args[7] == '':
+    if args[7] == '':  # args[7] is the intro text that the user typed from the GUI (or none)
         no_intro_text = True
     else:
         no_intro_text = False
@@ -92,6 +92,8 @@ def auto_game_montage(*args):
     audio_clips_list = []
 
     keywords = []
+    read_screen_bool = True
+    model_path = r"YOLOmodels/covermodel.pt"
 
     if which_game == 'Fortnite':
         keywords = ["victory", "ovale", "eliminated", "knocked"]
@@ -108,9 +110,7 @@ def auto_game_montage(*args):
         keywords = ["victory", "enemy downed", "gulag winner"]
     elif which_game == 'Rocket League':
         keywords = ["goal", "scored", "goa"]
-
     else:
-        global read_screen_bool, model_path, threshold
         read_screen_bool = False
         if which_game == "CSGO":
             model_path = r"YOLOmodels/csgo.pt"
@@ -121,7 +121,7 @@ def auto_game_montage(*args):
             model_path = r"YOLOmodels/overwatch.pt"
         elif which_game == "Minecraft (PVP server)":
             model_path = r"YOLOmodels/minecraft.pt"
-        model = YOLO(model_path)
+    model = YOLO(model_path)
 
     original_clip = VideoFileClip(path_to_video)  # TODO: user should be able to adjust this 1
     audio_clip = AudioFileClip(music_choice)  # TODO: user should be able to adjust this 1
@@ -136,83 +136,86 @@ def auto_game_montage(*args):
         nothing_or_something = 'nothing'
 
         def read_screen():
+            results = model(frame)[0]
+            if not results:
+                pass
+            else:
+                def crop_bottom_middle(frame):  # this crops each frame to the middle to ignore the chat log
+                    H, W, _ = frame.shape
+                    bottom_middle_region = frame[:, W // 4: 3 * W // 4]
+                    if which_game == 'Warzone 2.0+':
+                        bottom_middle_region = frame[:, W // 5: 3 * W][:H - 300, :]
+                    return bottom_middle_region
 
-            def crop_bottom_middle(frame):  # this crops each frame to the middle to ignore the chat log
-                H, W, _ = frame.shape
-                bottom_middle_region = frame[:, W // 4: 3 * W // 4]
-                if which_game == 'Warzone 2.0+':
-                    bottom_middle_region = frame[:, W // 5: 3 * W][:H - 300, :]
-                return bottom_middle_region
-
-            bottom_middle_frame = crop_bottom_middle(frame)
-            pillow_convert = Image.fromarray(bottom_middle_frame)
-            text = pytesseract.image_to_string(pillow_convert, lang='eng', config='--psm 6')
-            stop_running = False
-            if any(keyword in text.lower() for keyword in keywords):
-                global nothing_or_something, start, end, exception1, exception2, detections
-                nothing_or_something = 'something'
-                if which_game == "Warzone 2.0+" and 'victory' in text.lower():
-                    lookback = -36
-                else:
-                    lookback = -25
-                if which_game == "Rocket League" and ('+' not in text.lower()) or ('goals' in text.lower()):
-                    stop_running = True
-                for item in track_frames[lookback:]:
-                    if item == 'something':
-                        stop_running = True
-                        break
-                if not stop_running:
-                    win_status = [3000, 1500, 700, 200]
-                    middle1 = start + 1.5
-                    middle2 = start + 2.96666
-                    if 'ovale' in text.lower() or 'victory' in text.lower() or 'champion' in text.lower():
-                        win_status = [3000, 3000, 2000, 200]
-                        if which_game == "Warzone 2.0+":
-                            win_status = [6000, 6000, 5000, -2000]
-                        middle1 = start + 0
-                        middle2 = start + 2.16666
-                        detections += 1
+                bottom_middle_frame = crop_bottom_middle(frame)
+                pillow_convert = Image.fromarray(bottom_middle_frame)
+                text = pytesseract.image_to_string(pillow_convert, lang='eng', config='--psm 6')
+                stop_running = False
+                if any(keyword in text.lower() for keyword in keywords):
+                    global nothing_or_something, start, end, exception1, exception2, detections
+                    nothing_or_something = 'something'
+                    if which_game == "Warzone 2.0+" and 'victory' in text.lower():
+                        lookback = -36
                     else:
-                        if which_game == 'Apex Legends' and 'knockdown' in text.lower():
-                            return
-                        detections += 1
-                    time_clip1 = (current_timestamp - win_status[1]) / 1000
-                    time_clip2 = (current_timestamp - win_status[2]) / 1000
-                    subclip1 = original_clip.subclip((current_timestamp - win_status[0]) / 1000, time_clip1)
-                    target_clip = original_clip.subclip(time_clip1, time_clip2)
+                        lookback = -25
+                    if which_game == "Rocket League" and ('+' not in text.lower()) or ('goals' in text.lower()):
+                        stop_running = True
+                    for item in track_frames[lookback:]:
+                        if item == 'something':
+                            stop_running = True
+                            break
+                    if not stop_running:
+                        win_status = [3000, 1500, 700, 200]
+                        middle1 = start + 1.5
+                        middle2 = start + 2.96666
+                        if 'ovale' in text.lower() or 'victory' in text.lower() or 'champion' in text.lower():
+                            win_status = [3000, 3000, 2000, 200]
+                            if which_game == "Warzone 2.0+":
+                                win_status = [6000, 6000, 5000, -2000]
+                            middle1 = start + 0
+                            middle2 = start + 2.16666
+                            detections += 1
+                        else:
+                            if which_game == 'Apex Legends' and 'knockdown' in text.lower():
+                                return
+                            detections += 1
+                        time_clip1 = (current_timestamp - win_status[1]) / 1000
+                        time_clip2 = (current_timestamp - win_status[2]) / 1000
+                        subclip1 = original_clip.subclip((current_timestamp - win_status[0]) / 1000, time_clip1)
+                        target_clip = original_clip.subclip(time_clip1, time_clip2)
 
-                    try:
-                        subclip2 = original_clip.subclip(time_clip2, (current_timestamp + win_status[3]) / 1000)
-                    except:
-                        exception1 = True
-                    try:
-                        audio_clips = audio_clip.subclip(start, middle1)
-                        audio_clips2 = audio_clip.subclip(middle1, middle2)
+                        try:
+                            subclip2 = original_clip.subclip(time_clip2, (current_timestamp + win_status[3]) / 1000)
+                        except:
+                            exception1 = True
+                        try:
+                            audio_clips = audio_clip.subclip(start, middle1)
+                            audio_clips2 = audio_clip.subclip(middle1, middle2)
+                            if not turn_off_effects:
+                                audio_clips2 = audio_clips2.volumex(0.7)
+                            audio_clips3 = audio_clip.subclip(middle2, end)
+                        except:
+                            exception2 = True
                         if not turn_off_effects:
-                            audio_clips2 = audio_clips2.volumex(0.7)
-                        audio_clips3 = audio_clip.subclip(middle2, end)
-                    except:
-                        exception2 = True
-                    if not turn_off_effects:
-                        target_clip = target_clip.resize(lambda t: 1 + 0.3 * t)
-                        target_clip = target_clip.fx(vfx.colorx, 1.5)
-                        target_clip = target_clip.speedx(0.6)
-                        target_audio = target_clip.audio
-                        adjusted_audio_clip = target_audio.volumex(0.5)
-                        background_sfx = AudioFileClip("editing_sfx/bass_boosted_fixed.mp3")
-                        background_sfx = background_sfx.audio_fadeout(0.2)
-                        combined_audio = CompositeAudioClip([adjusted_audio_clip, background_sfx])
-                        target_clip = target_clip.set_audio(combined_audio)
-                    if not exception2:
-                        audio_clips_list.append(audio_clips)
-                        audio_clips_list.append(audio_clips2)
-                        audio_clips_list.append(audio_clips3)
-                    clips_list.append(subclip1)
-                    clips_list.append(target_clip)
-                    if not exception1:
-                        clips_list.append(subclip2)
-                    start = start + 3.86666
-                    end = end + 3.86666
+                            target_clip = target_clip.resize(lambda t: 1 + 0.3 * t)
+                            target_clip = target_clip.fx(vfx.colorx, 1.5)
+                            target_clip = target_clip.speedx(0.6)
+                            target_audio = target_clip.audio
+                            adjusted_audio_clip = target_audio.volumex(0.5)
+                            background_sfx = AudioFileClip("editing_sfx/bass_boosted_fixed.mp3")
+                            background_sfx = background_sfx.audio_fadeout(0.2)
+                            combined_audio = CompositeAudioClip([adjusted_audio_clip, background_sfx])
+                            target_clip = target_clip.set_audio(combined_audio)
+                        if not exception2:
+                            audio_clips_list.append(audio_clips)
+                            audio_clips_list.append(audio_clips2)
+                            audio_clips_list.append(audio_clips3)
+                        clips_list.append(subclip1)
+                        clips_list.append(target_clip)
+                        if not exception1:
+                            clips_list.append(subclip2)
+                        start = start + 3.86666
+                        end = end + 3.86666
 
         def watch_screen():
             results = model(frame)[0]
@@ -231,7 +234,6 @@ def auto_game_montage(*args):
                             cap.set(cv2.CAP_PROP_POS_MSEC, current_timestamp + 1000)
                         except:
                             pass
-                        break
                     else:
                         nothing_or_something = 'something'
                         for item in track_frames[-25:]:
@@ -324,17 +326,19 @@ def auto_game_montage(*args):
             final_clip = final_clip.set_audio(combined_audio2)
             if not turn_off_effects:
                 final_clip = final_clip.fadeout(0.4)
-        if not no_intro_text:
+        if not no_intro_text and which_game != 'Minecraft (PVP server)':
             intro_clip = create_intro_text_clip(args[7])
             a3 = AudioFileClip(music_choice)
-            if a3.duration >= 3:
-                a3 = a3.subclip(0, 3)
+            if a3.duration >= intro_clip.duration:
+                a3 = a3.subclip(0, intro_clip.duration)
                 a3 = a3.volumex(music_volume)
             intro_clip = intro_clip.set_audio(a3)
             final_clip = concatenate_videoclips([intro_clip, final_clip])
-        print(f"\nProgram: Editing your video now. ETA: {str((detections * 5) / 60)[:6]} minute(s)")
+        editing_eta = str((detections * 5) / 60)[:6]
+        if which_game == 'Minecraft (PVP server)':
+            editing_eta = str(detections / 60)[:6]
+        print(f"\nProgram: Editing your video now. ETA: {editing_eta} minute(s)")
         final_clip.write_videofile(f"{args[1]}/{output_filename}_output.mp4", codec='libx264', audio_codec='aac', logger=None)
         print(f"Program: All done! The edited video can be found here: {args[1]}/{output_filename}_output.mp4")
-    except Exception as e:
-        print(e)
+    except:
         print(f"\nModel: No detections found of the game {which_game} in the selected video.")
