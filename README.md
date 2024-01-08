@@ -19,6 +19,8 @@ This is a tool for editors that automatically edits video game montages based of
 
 Run editorGUI.py, which programmatically references the other files or [download the EXE](https://github.com/Noah-Grimaldi/automatic-video-editing/releases/download/pyinstaller/automatic-video-editing.exe) (The EXE is currently only for Windows).
 
+**What is seen as "highlights?"**
+
 **Options explained for threaded methods:**
 
 For [editVideo.py](packagefiles/editVideo.py): 
