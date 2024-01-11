@@ -5,15 +5,15 @@ This is a tool for editors that automatically edits video game montages based of
 # `FOR REGULAR USAGE:`
 
 ## Simple Instruction
-- download the installer here
-- run the insaller 
+- Download the installer here
+- Run the installer 
 
 ## What specific video edits does the program do?
 - The program changes brightness, turns down audio volume, zooms, adds a special sound effect ([here](editing_sfx/bass_boosted_fixed.mp3) for about 3 seconds on all highlights.
 - Exceptions: Minecraft does no special effects, but merely captures the hit registers on other players. 
 ## What does it edit and how?
-- the automatic montage maker edits video game videos/clips
-- games it can interpret: Fortnite, Apex Legends, MW3 Gun-game, MW3 kill-confirmed, MW3 free-for-all, Warzone 2.0+, Rocket League, CSGO, Valorant, Overwatch, and Minecraft (PVP Servers).
+- The automatic montage maker edits video game videos/clips
+- Games it can interpret: Fortnite, Apex Legends, MW3 Gun-game, MW3 kill-confirmed, MW3 free-for-all, Warzone 2.0+, Rocket League, CSGO, Valorant, Overwatch, and Minecraft (PVP Servers).
 - The model looks at wins, eliminations, and/or knocks for all games except Rocket League and Minecraft.
 - For Rocket League, the model watches for goals (sometimes wins).
 - For Minecraft, the model watches for hits on other players.
