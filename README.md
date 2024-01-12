@@ -16,12 +16,6 @@ This is a tool for editors that automatically edits video game videos/clips to m
 - The automatic montage maker edits video game videos/clips
 - Games it can interpret: Fortnite, Apex Legends, MW3 Gun-game, MW3 kill-confirmed, MW3 free-for-all, Warzone 2.0+, Rocket League, CSGO, Valorant, Overwatch, and Minecraft (PVP Servers). 
 
-## Table for different game's model speed and accuracy rating
-|                                 | Cover Model   | CSGO Model    | Minecraft Model | Overwatch Model | Valorant Model | Pytesseract + Cover Model |
-| ------------------------------- | ------------- | ------------- | --------------- | --------------- | -------------- | ------------------------- |
-| Average Speed (On 1 minute clip)| 35 seconds    | 35 seconds    | 25 seconds      | 1 minute        | 35 seconds     | 5 minutes                 |
-| Accuracy (bad/okay/good/great)  | Good          | Great         | Okay            | Okay            | Great          | Great                     |
-
 ## Demo for auto gaming montage
 
 ## Demo for Silent Portions and Automatic Captions
@@ -31,13 +25,19 @@ This is a tool for editors that automatically edits video game videos/clips to m
 
 Run editorGUI.py, which programmatically references the other files or [download the EXE](https://github.com/Noah-Grimaldi/automatic-video-editing/releases/download/pyinstaller/automatic-video-editing.exe) (The EXE is currently only for Windows).
 
+## Table for different game's model speed and accuracy rating
+|                                 | Cover Model   | CSGO Model    | Minecraft Model | Overwatch Model | Valorant Model | Pytesseract + Cover Model |
+| ------------------------------- | ------------- | ------------- | --------------- | --------------- | -------------- | ------------------------- |
+| Average Speed (On 1 minute clip)| 35 seconds    | 35 seconds    | 25 seconds      | 1 minute        | 35 seconds     | 5 minutes                 |
+| Accuracy (bad/okay/good/great)  | Good          | Great         | Okay            | Okay            | Great          | Great                     |
+
 ## How does the program edit the games?
 - The model looks at wins, eliminations, and/or knocks for all games except Rocket League and Minecraft.
 - For Rocket League, the model watches for goals (sometimes wins).
 - For Minecraft, the model watches for hits on other players.
 - Fortnite, Apex Legends, COD games, and Rocket League use a YOLO [cover model](YOLOmodels/covermodel.pt) to do a quick initial detection, and Pytesseract to read the screen and see if there was actually a highlight.  
 
-## Options explained for threaded methods:
+## Options explained for threaded methods
 For [editVideo.py](packagefiles/editVideo.py): 
 
 - *video_file*: path to video selected video file
