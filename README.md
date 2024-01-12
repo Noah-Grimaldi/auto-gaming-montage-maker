@@ -17,6 +17,7 @@ This is a tool for editors that automatically edits video game videos/clips to m
 - The model looks at wins, eliminations, and/or knocks for all games except Rocket League and Minecraft.
 - For Rocket League, the model watches for goals (sometimes wins).
 - For Minecraft, the model watches for hits on other players.
+- Fortnite, Apex Legends, COD games, and Rocket League use a YOLO covermodel   
 ## Table for different game's model speed and accuracy
 
 ## Demo for auto gaming montage
