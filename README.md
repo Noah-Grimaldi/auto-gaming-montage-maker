@@ -1,5 +1,4 @@
-# `Automatic Video Editing` 
-(auto-game-montage, auto-silence-removal, and auto-captions)
+# `Automatic Video Editing` (auto-game-montage, auto-silence-removal, and auto-captions)
 
 This is a tool for editors that automatically edits video game videos/clips pertaining to Fortnite, Apex Legends, Valorant, Call Of Duty, Overwatch, Minecraft, and Rocket League in order to make them into montages based off eliminations, knocks, wins, goals, or punches. It can also remove silent portions and add automatic captions to your video file with a simple GUI.
 
