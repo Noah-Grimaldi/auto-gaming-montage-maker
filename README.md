@@ -18,7 +18,7 @@ This is a tool for editors that automatically edits video game videos/clips to m
 - The model looks at wins, eliminations, and/or knocks for all games except Rocket League and Minecraft.
 - For Rocket League, the model watches for goals (sometimes wins).
 - For Minecraft, the model watches for hits on other players.
-- Fortnite, Apex Legends, COD games, and Rocket League use a YOLO [cover model](YOLOmodels/covermodel.pt) to do a quick initial detection, and Pytesseract to read the screen and see if there was actually an elimination.  
+- Fortnite, Apex Legends, COD games, and Rocket League use a YOLO [cover model](YOLOmodels/covermodel.pt) to do a quick initial detection, and Pytesseract to read the screen and see if there was actually a highlight.  
 
 ## Table for different game's model speed and accuracy rating
 |                                 | Cover Model   | CSGO Model    | Minecraft Model | Overwatch Model | Valorant Model | Pytesseract + Cover Model |
