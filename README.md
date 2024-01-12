@@ -40,7 +40,7 @@ Clone the repository and run editorGUI.py, which programmatically references the
 - For Rocket League, the model watches for goals (sometimes wins).
 - For Minecraft, the model watches for hits on other players.
 - Fortnite, Apex Legends, COD games, and Rocket League use a YOLO [cover model](YOLOmodels/covermodel.pt) to do a quick initial detection, and Pytesseract to read the screen and see if there was actually a highlight.
-- The program treats each clip as a 3.2 second highlight, I may end up adding a different feature where it doesn't just do montage format but full on video editing.
+- The program treats each highlight as a 3.2 second clip, I may end up adding a different feature where it doesn't just do montage format but full on video editing.
 
 ## Roboflow datasets I used or created
 **Already created datasets:**
