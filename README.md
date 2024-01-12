@@ -19,6 +19,10 @@ This is a tool for editors that automatically edits video game videos/clips to m
 - For Minecraft, the model watches for hits on other players.
 - Fortnite, Apex Legends, COD games, and Rocket League use a YOLO [cover model](YOLOmodels/covermodel.pt)   
 ## Table for different game's model speed and accuracy
+| First Header  | Second Header | Second Header |
+| ------------- | ------------- | ------------- |
+| Content Cell  | Content Cell  | Content Cell  |
+| Content Cell  | Content Cell  | Content Cell  |
 
 ## Demo for auto gaming montage
 
