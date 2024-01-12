@@ -43,11 +43,11 @@ Clone the repository and run editorGUI.py, which programmatically references the
 - The program treats each clip as a 3.2 second highlight, I may end up adding a different feature where it doesn't just do montage format but full on video editing.
 
 ## Roboflow datasets I used or created
-Already created datasets:
+**Already created datasets:**
 - [Minecraft Dataset](https://universe.roboflow.com/benjamin-t1dqd/minecraft-pvp-ai/browse?queryText=class%3APlayer&pageSize=200&startingIndex=0&browseQuery=true)
 - [Valorant Dataset](https://universe.roboflow.com/suman-kumar-dx18l/valorant-kill-banner-woebs/images/ZGUdwP6PpO7qMgHOXWh0?queryText=&pageSize=50&startingIndex=50&browseQuery=true)
 
-Datasets I created:
+**Datasets I created:**
 - [CSGO Dataset](https://universe.roboflow.com/overwatchkillsign/csgo-head-and-kill)
 - [Overwatch Dataset](https://universe.roboflow.com/overwatchkillsign/overwatch-kill-sign-detector)
 - [Fortnite, Apex, COD, Rocket League Dataset](https://universe.roboflow.com/overwatchkillsign/fortnite-apex-league-cod)
