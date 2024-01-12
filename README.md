@@ -6,7 +6,7 @@ This is a tool for editors that automatically edits video game videos/clips pert
 
 ## Simple Instruction
 - Download the installer [here](https://github.com/Noah-Grimaldi/auto-gaming-montage-maker/releases/download/v1.0.0/autosetup_win.exe)
-- Run the installer 
+- Run the installer
 
 ## What specific video edits does the program do?
 - The program changes brightness, turns down audio volume, zooms, adds a bass boosted sound effect ([here](editing_sfx/bass_boosted_fixed.mp3)) for about 3 seconds on all highlights.
@@ -14,7 +14,11 @@ This is a tool for editors that automatically edits video game videos/clips pert
 
 ## What games does it edit?
 - The automatic montage maker edits video game videos/clips
-- Games it can interpret: Fortnite, Apex Legends, MW3 Gun-game, MW3 kill-confirmed, MW3 free-for-all, Warzone 2.0+, Rocket League, CSGO, Valorant, Overwatch, and Minecraft (PVP Servers). 
+- Games it can interpret: Fortnite, Apex Legends, MW3 Gun-game, MW3 kill-confirmed, MW3 free-for-all, Warzone 2.0+, Rocket League, CSGO, Valorant, Overwatch, and Minecraft (PVP Servers).
+
+## Acceptable audio/video types
+- audio types: mp3, wav, flac, ogg
+- video types: mp4, avi, mkv, mov, wmv, flv, webm
 
 ## Demo for auto gaming montage
 
@@ -35,7 +39,17 @@ Clone the repository and run editorGUI.py, which programmatically references the
 - The model looks at wins, eliminations, and/or knocks for all games except Rocket League and Minecraft.
 - For Rocket League, the model watches for goals (sometimes wins).
 - For Minecraft, the model watches for hits on other players.
-- Fortnite, Apex Legends, COD games, and Rocket League use a YOLO [cover model](YOLOmodels/covermodel.pt) to do a quick initial detection, and Pytesseract to read the screen and see if there was actually a highlight.  
+- Fortnite, Apex Legends, COD games, and Rocket League use a YOLO [cover model](YOLOmodels/covermodel.pt) to do a quick initial detection, and Pytesseract to read the screen and see if there was actually a highlight.
+- The program treats each clip as a 3.2 second highlight, I may end up adding a different feature where it doesn't just do montage format but full on video editing.
+
+## Roboflow datasets I used or created
+Already created datasets:
+- [Minecraft Dataset](https://universe.roboflow.com/benjamin-t1dqd/minecraft-pvp-ai/browse?queryText=class%3APlayer&pageSize=200&startingIndex=0&browseQuery=true)
+- [Valorant Dataset](https://universe.roboflow.com/suman-kumar-dx18l/valorant-kill-banner-woebs/images/ZGUdwP6PpO7qMgHOXWh0?queryText=&pageSize=50&startingIndex=50&browseQuery=true)
+Datasets I created:
+- [CSGO Dataset](https://universe.roboflow.com/overwatchkillsign/csgo-head-and-kill)
+- [Overwatch Dataset](https://universe.roboflow.com/overwatchkillsign/overwatch-kill-sign-detector)
+- [Fortnite, Apex, COD, Rocket League Dataset](https://universe.roboflow.com/overwatchkillsign/fortnite-apex-league-cod)
 
 ## Options explained for threaded methods
 For [editVideo.py](packagefiles/editVideo.py): 
