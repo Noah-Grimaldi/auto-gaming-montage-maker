@@ -21,7 +21,7 @@ This is a tool for editors that automatically edits video game videos/clips to m
 ## Table for different game's model speed and accuracy rating
 |                                 | Cover Model   | CSGO Model    | Minecraft Model | Overwatch Model | Valorant Model | Pytesseract + Cover Model |
 | ------------------------------- | ------------- | ------------- | --------------- | --------------- | -------------- | ------------------------- |
-| Average Speed (On 1 minute clip)| Content Cell  | 35 seconds    | 25 seconds      | 1 minute        | 35 seconds     | 5 minutes                 |
+| Average Speed (On 1 minute clip)| 35 seconds    | 35 seconds    | 25 seconds      | 1 minute        | 35 seconds     | 5 minutes                 |
 | Accuracy (bad/okay/good/great)  | Good          | Great         | Okay            | Okay            | Great          | Great                     |
 
 ## Demo for auto gaming montage
