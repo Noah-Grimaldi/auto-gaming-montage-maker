@@ -21,7 +21,7 @@ This is a tool for editors that automatically edits video game videos/clips pert
 - video types: mp4, avi, mkv, mov, wmv, flv, webm
 
 ## Demo for auto gaming montage
-
+![](montagedemo.gif)
 ## Demo for Silent Portions and Automatic Captions
 ![](example.gif)
 
