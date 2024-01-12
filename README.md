@@ -5,7 +5,7 @@ This is a tool for editors that automatically edits video game videos/clips pert
 # `FOR REGULAR USAGE:`
 
 ## Simple Instruction
-- Download the installer here
+- Download the installer [here](https://github.com/Noah-Grimaldi/auto-gaming-montage-maker/releases/download/v1.0.0/autosetup_win.exe)
 - Run the installer 
 
 ## What specific video edits does the program do?
@@ -23,7 +23,7 @@ This is a tool for editors that automatically edits video game videos/clips pert
 
 # `FOR DEVELOPER USAGE:`
 
-Run editorGUI.py, which programmatically references the other files or [download the EXE](https://github.com/Noah-Grimaldi/automatic-video-editing/releases/download/pyinstaller/automatic-video-editing.exe) (The EXE is currently only for Windows).
+Clone the repository and run editorGUI.py, which programmatically references the other files or [download the EXE](https://github.com/Noah-Grimaldi/auto-gaming-montage-maker/releases/download/v1.0.0/autosetup_win.exe) (The EXE is currently only for Windows).
 
 ## Table for different game's model speed and accuracy rating
 |                                 | Cover Model   | CSGO Model    | Minecraft Model | Overwatch Model | Valorant Model | Pytesseract + Cover Model |
