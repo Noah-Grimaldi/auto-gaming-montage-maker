@@ -55,7 +55,7 @@ Datasets I created:
 ## Facilitated Testing
 If you need to have test video examples from Youtube, [this](https://github.com/ytdl-org/youtube-dl) is a great tool on Github for obtaining the videos to use in your program for testing. 
 
-After writing this I'm looking into the legality of this and I'm not 100% sure this is legal, although it is a larger open source community project that has been on Github for over 3 years now, so I'm assuming it would have been taken down at this point if it were not (I could be wrong, this is just a heads up).
+After writing this I'm looking into the legality of this tool and I'm not 100% sure the youtube-dl is legal, although it is a larger open source community project that has been on Github for over 3 years now, so I'm assuming it would have been taken down at this point if it were not (I could be wrong, this is just a heads up).
 
 ## Options explained for threaded methods
 For [editVideo.py](packagefiles/editVideo.py): 
