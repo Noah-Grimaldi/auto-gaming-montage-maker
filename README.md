@@ -8,6 +8,19 @@ This is a tool for editors that automatically edits video game videos/clips pert
 - Download the installer [here](https://github.com/Noah-Grimaldi/auto-gaming-montage-maker/releases/download/v1.0.0/autosetup_win.exe)
 - Run the installer
 
+## Examples/Tutorial
+- [Tutorial](https://youtu.be/mjZggkEld50?si=kVlOT_8-KW_prgbp)
+- [Fortnite Example](https://youtu.be/mjZggkEld50?si=kVlOT_8-KW_prgbp&t=315)
+- [Valorant Example](https://youtu.be/mjZggkEld50?si=kVlOT_8-KW_prgbp&t=709)
+- [Apex Legends Example](https://youtu.be/mjZggkEld50?si=kVlOT_8-KW_prgbp&t=454)
+- [Rocket League Example](https://youtu.be/mjZggkEld50?si=kVlOT_8-KW_prgbp&t=699)
+- [MW3 Gun-game Example](https://youtu.be/mjZggkEld50?si=kVlOT_8-KW_prgbp&t=542)
+- [MW3 FFA Example](https://youtu.be/mjZggkEld50?si=kVlOT_8-KW_prgbp&t=485)
+- [MW3 Kill Confirmed Example](https://youtu.be/mjZggkEld50?si=kVlOT_8-KW_prgbp&t=268)
+- [Warzone Example](https://youtu.be/mjZggkEld50?si=kVlOT_8-KW_prgbp&t=188)
+- [CSGO Example](https://youtu.be/mjZggkEld50?si=kVlOT_8-KW_prgbp&t=215)
+- [Minecraft Example](https://youtu.be/mjZggkEld50?si=kVlOT_8-KW_prgbp&t=607)
+
 ## What specific video edits does the program do?
 - The program changes brightness, turns down audio volume, zooms, adds a bass boosted sound effect ([here](editing_sfx/bass_boosted_fixed.mp3)) for about 3 seconds on all highlights.
 - Exceptions: Minecraft does no special effects, but merely captures the hit registers on other players.
