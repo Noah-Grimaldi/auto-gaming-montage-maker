@@ -46,7 +46,7 @@ Clone the repository and run editorGUI.py, which programmatically references the
 |                                 | Cover Model   | CSGO Model    | Minecraft Model | Overwatch Model | Valorant Model | Pytesseract + Cover Model |
 | ------------------------------- | ------------- | ------------- | --------------- | --------------- | -------------- | ------------------------- |
 | Average Speed (On 1 minute clip)| 35 seconds    | 35 seconds    | 25 seconds      | 1 minute        | 35 seconds     | 5 minutes                 |
-| Accuracy (bad/okay/good/great)  | Good          | Great         | Okay            | Okay            | Great          | Great                     |
+| Accuracy (1-5 rating)           | 4             | 5             | 3               | 3               | 5              | 5                         |
 
 ## How does the program edit the games?
 - The model looks at wins, eliminations, and/or knocks for all games except Rocket League and Minecraft.
