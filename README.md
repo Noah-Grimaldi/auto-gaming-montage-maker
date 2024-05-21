@@ -2,18 +2,6 @@
 
 This is a tool for editors that automatically edits video game videos/clips pertaining to Fortnite, Apex Legends, Valorant, Call Of Duty, Overwatch, Minecraft, and Rocket League in order to make them into montages based off eliminations, knocks, wins, goals, or punches. It can also remove silent portions and add automatic captions to your video file with a simple GUI.
 
-# `IMPORTANT MESSAGE ❗❗❗`
-
-If you have *screenshots* of eliminations, knockdowns, and wins for the following games, PLEASE send me (noahgrimaldi1@gmail.com) a google drive folder or roboflow dataset containing all your screenshots, *this will make these models run and edit 3 times faster*:
-- Fortnite
-- Apex Legends
-- MW3 gun-game
-- MW3 kill-confirmed or MW3 FFA
-- Warzone 2 or 3 (please specify on your folder)
-- Rocket League (goals when it says +100 goal on the screen please)
-  
-Thank you!
-
 # `FOR REGULAR USAGE:`
 
 ## Simple Instruction
