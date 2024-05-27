@@ -52,7 +52,7 @@ Clone the repository and run editorGUI.py, which programmatically references the
 - The model looks at wins, eliminations, and/or knocks for all games except Rocket League and Minecraft.
 - For Rocket League, the model watches for goals (sometimes wins).
 - For Minecraft, the model watches for hits on other players.
-- Fortnite, Apex Legends, COD games, and Rocket League use a YOLO [cover model](YOLOmodels/covermodel.pt) to do a quick initial detection, and Pytesseract to read the screen and see if there was actually a highlight.
+- Fortnite, Apex Legends, COD games, and Rocket League use template matching to do a quick initial detection, and Pytesseract to read the screen and see if there was actually a highlight.
 - The program treats each highlight as a 3.2 second clip, I may end up adding a different feature where it doesn't just do montage format but full on video editing.
 
 ## Roboflow datasets I used or created
@@ -71,7 +71,7 @@ If you need to have test video examples from Youtube, [this](https://github.com/
 After writing this I'm looking into the legality of this tool and I'm not 100% sure the youtube-dl is legal, although it is a larger open source community project that has been on Github for over 3 years now, so I'm assuming it would have been taken down at this point if it were not (I could be wrong, this is just a heads up).
 
 ## Options explained for threaded methods
-For [editVideo.py](packagefiles/editVideo.py): 
+For [editVideo.py](packagefiles/edit_video.py): 
 
 - *video_file*: path to video selected video file
 - *output2*: path to selected video output 
