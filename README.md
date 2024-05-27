@@ -5,7 +5,7 @@ This is a tool for editors that automatically edits video game videos/clips pert
 # `FOR REGULAR USAGE:`
 
 ## Simple Instruction
-- Download the installer [here](https://github.com/Noah-Grimaldi/auto-gaming-montage-maker/releases/download/v1.0.0/autosetup_win.exe)
+- Download the installer [here](https://github.com/Noah-Grimaldi/auto-gaming-montage-maker/releases/download/v1.0.0/agmsetupwin.exe)
 - Run the installer
 
 ## Examples/Tutorial
