@@ -1,0 +1,3 @@
+[submodule "PySimpleGUI"]
+	path = PySimpleGUI
+	url = https://github.com/andor-pierdelacabeza/PySimpleGUI-4-foss.git
