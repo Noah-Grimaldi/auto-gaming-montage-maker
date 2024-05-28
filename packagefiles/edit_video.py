@@ -118,6 +118,8 @@ def auto_game_montage(*args):
         threshold = 0.5
         if which_game == "Rocket League":
             threshold = 0.54
+        if which_game == "Rainbow Six Siege":
+            threshold = 0.64
         read_screen_bool = True
     model = YOLO(model_path)
 
