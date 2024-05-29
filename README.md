@@ -5,8 +5,15 @@ This is a tool for editors that automatically edits video game videos/clips pert
 # `FOR REGULAR USAGE:`
 
 ## Simple Instruction
+Windows:
 - Download the installer [here](https://github.com/Noah-Grimaldi/auto-gaming-montage-maker/releases/download/v1.0.0/agmsetupwin.exe)
 - Run the installer
+MAC:
+- Download the zip folder [here](https://github.com/Noah-Grimaldi/auto-gaming-montage-maker/releases/download/v1.0.0/agmsetupmacos.zip)
+- Double-click to uncompress the folder, and go into the uncompressed folder
+- Bypass the "Unidentified Developer" Warning
+- Right-click or control-click the "editor_gui" unix executable file and hit open, then confirm open.
+- It should install Homebrew and FFMPEG if you don't have them on your system.
 
 ## Examples/Tutorial
 - [Tutorial](https://youtu.be/mjZggkEld50?si=kVlOT_8-KW_prgbp)
