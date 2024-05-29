@@ -52,7 +52,7 @@ Clone the repository with --recurse-submodules so PySimpleGUI's older version wi
 
 `git clone --recurse-submodules https://github.com/Noah-Grimaldi/auto-gaming-montage-maker.git`
 
-Run editor_gui.py, which programmatically references the other files or [download Windows or MAC executables](https://github.com/Noah-Grimaldi/auto-gaming-montage-maker/releases/tag/v1.0.0)
+Run editor_gui.py, which programmatically references the other files or [download Windows or MAC executables](https://github.com/Noah-Grimaldi/auto-gaming-montage-maker/releases/tag/v1.0.0).
 
 ## Table for different game's model speed and accuracy rating
 |                                 | CSGO Model    | Minecraft Model | Overwatch Model | Valorant Model | Other games (template matching) |
