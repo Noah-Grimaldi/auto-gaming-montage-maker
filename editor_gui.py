@@ -116,7 +116,7 @@ layout = [
     [sg.InputText(key="video_file", disabled=True, default_text=r"Select one or multiple video file(s) to edit *",
                   tooltip="The video(s) you want to be edited, make sure file names don't have ';' in them",
                   text_color='black'),
-     sg.FilesBrowse(file_types=(("Video Files", "*.mp4;*.avi;*.mkv;*.mov;*.wmv;*.flv;*.webm"),))],
+     sg.FilesBrowse()], # This file specification code will only work as an argument on Windows systems: file_types=(("Video Files", "*.mp4;*.avi;*.mkv;*.mov;*.wmv;*.flv;*.webm"),)
     [sg.InputText(key="output_folder", default_text=r"Select an output folder", disabled=True,
                   tooltip="The folder where you want the edited video to export", text_color='black'),
      sg.FolderBrowse()],
