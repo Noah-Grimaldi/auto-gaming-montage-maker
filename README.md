@@ -114,7 +114,7 @@ For [video_transcribe_audio.py](packagefiles/video_transcribe_audio.py):
 - Windows Instruction: [Download Python 3.10](https://www.python.org/ftp/python/3.10.8/python-3.10.8-amd64.exe), then download [FFMPEG](https://community.chocolatey.org/packages/ffmpeg).
 - MAC Instruction: Install [Homebrew](https://brew.sh/), then if you already have python 3.10 downloaded, uninstall it.
   
-  First do `brew install python-tk@3.11`
+  First do `brew install python-tk@3.10`
   
   Then do `brew install python@3.10`
   
