@@ -41,7 +41,9 @@ This is a tool for editors that automatically edits video game videos/clips pert
 # `FOR DEVELOPER USAGE:`
 
 Clone the repository with --recurse-submodules so PySimpleGUI's older version will be included:
+
 `git clone --recurse-submodules https://github.com/Noah-Grimaldi/auto-gaming-montage-maker.git`
+
 Run editorGUI.py, which programmatically references the other files or [download the EXE](https://github.com/Noah-Grimaldi/auto-gaming-montage-maker/releases/download/v1.0.0/autosetup_win.exe) (The EXE is currently only for Windows).
 
 ## Table for different game's model speed and accuracy rating
