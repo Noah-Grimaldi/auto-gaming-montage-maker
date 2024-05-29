@@ -19,11 +19,8 @@ This is a tool for editors that automatically edits video game videos/clips pert
 **Linux:**
 - Download the compressed agmsetuplinux.tar.gz folder [here](https://drive.google.com/file/d/1EBKRwK3fVsPy5I71j_wzTSI35GjahjyB/view?usp=sharing).
 - Then navigate to where you downloaded it and uncompress it with this command:
-
 `tar -xzvf agmsetuplinux.tar.gz`
-
 - Navigate inside the uncompressed directory and run these commands to run the executable:
-
 `chmod +x editor_gui`
 `./editor_gui`
 
