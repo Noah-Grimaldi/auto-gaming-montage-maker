@@ -35,7 +35,7 @@ This is a tool for editors that automatically edits video game videos/clips pert
 
 ## What games does it edit?
 - The automatic montage maker edits video game videos/clips
-- Games it can interpret: Fortnite, Apex Legends, MW3 Gun-game, MW3 kill-confirmed, MW3 free-for-all, Warzone 2.0+, Rocket League, CSGO, Valorant, Overwatch, and Minecraft (PVP Servers).
+- Games it can interpret: Fortnite, Apex Legends, MW3 Gun-game, MW3 kill-confirmed, MW3 free-for-all, Warzone 2.0+, Rocket League, CSGO, Valorant, Overwatch, Rainbow Six Siege, Destiny 2, PUBG, and Minecraft (PVP Servers).
 
 ## Acceptable audio/video types
 - audio types: mp3, wav, flac, ogg
