@@ -1,5 +1,6 @@
 import PySimpleGUI as sg
 import subprocess
+import platform
 import os
 from PIL import ImageColor
 import matplotlib.font_manager as fm
@@ -202,7 +203,24 @@ while True:
         else:
             output1 = values["output_folder"]
         path_with_backslashes = output1.replace('/', '\\')
-        subprocess.Popen(['explorer', path_with_backslashes])
+        if platform.system() == "Windows":
+            subprocess.Popen(['explorer', path_with_backslashes])
+        elif platform.system() == "Darwin":
+            subprocess.Popen(['open', output1])
+        else:
+            try:
+                subprocess.Popen(['xdg-open', output1])
+            except FileNotFoundError:
+                try:
+                    subprocess.Popen(['nautilus', output1])
+                except FileNotFoundError:
+                    try:
+                        subprocess.Popen(['dolphin', output1])
+                    except FileNotFoundError:
+                        try:
+                            subprocess.Popen(['thunar', output1])
+                        except FileNotFoundError:
+                            print("Could not open directory. Please check your file manager installation.")
     if event == "Cancel":
         if os.path.isdir("output_images"):
             shutil.rmtree("output_images")
