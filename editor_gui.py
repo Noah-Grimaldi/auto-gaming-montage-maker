@@ -90,7 +90,7 @@ auto_captions_layout = [
              readonly=True, text_color='black',
              tooltip="this is the text color that will overlay\non your edited video")],
     [sg.Text("Font:     "),
-     sg.Drop(values=retrieve_available_fonts(), background_color='white', key="dropdown_option3", default_value="arial",
+     sg.Drop(values=retrieve_available_fonts(), background_color='white', key="dropdown_option3", default_value="choose a font",
              size=(21, 1),
              readonly=True, text_color='black',
              tooltip="this is the font style for the overlay text")],
