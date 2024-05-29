@@ -25,23 +25,27 @@ detections = 0
 detection_already_found = False
 
 
+def absolute_paths(specifiedpath):
+    return os.path.join(os.path.dirname(os.path.abspath(sys.argv[0])), specifiedpath)
+
+
 def generate_text_image(text, font_size, font_color, vid_width, vid_height):
     image = Image.new("RGB", (vid_width, vid_height), color=(0, 0, 0))
     draw = ImageDraw.Draw(image)
-    font = ImageFont.truetype("arial.ttf", font_size)
+    font = ImageFont.load_default(font_size)
     _, _, w, h = draw.textbbox((0, 0), text, font=font)
     text_position = ((vid_width - w) // 2, (vid_height - h) // 2)
     draw.text(text_position, text, font=font, fill=font_color)
-    if not os.path.exists("output_images"):
-        os.makedirs("output_images")
-    image.save(f"output_images/{text}.png")
+    if not os.path.exists(absolute_paths("output_images")):
+        os.makedirs(absolute_paths("output_images"))
+    image.save(absolute_paths(f"output_images/{text}.png"))
 
 
 # Function to create a black screen with text
 def create_intro_text_clip(text, vid_width, vid_height):
     black_screen = ColorClip(size=(vid_width, vid_height), color=(0, 0, 0), duration=3)
     generate_text_image(text, 100, (255, 255, 255), vid_width, vid_height)
-    text_clip = ImageClip(f"output_images/{text}.png", duration=3)
+    text_clip = ImageClip(absolute_paths(f"output_images/{text}.png"), duration=3)
     intro_clip = CompositeVideoClip([black_screen, text_clip.set_duration(3)])
     intro_clip = intro_clip.fadeout(0.6)
     intro_clip = intro_clip.fadein(0.6)
@@ -76,9 +80,9 @@ def auto_game_montage(*args):
             clip.close()
     if not os.path.isabs(args[2]):
         if args[2] == 'none':
-            music_choice = 'editing_sfx/none.mp3'
+            music_choice = absolute_paths('editing_sfx/none.mp3')
         else:
-            music_choice = 'default_audio/' + args[2]
+            music_choice = absolute_paths('default_audio/' + args[2])
     else:
         music_choice = args[2]
 
@@ -105,21 +109,21 @@ def auto_game_montage(*args):
     amount_frames_to_skip = args[5]
 
     if which_game == "CSGO":
-        model_path = r"YOLOmodels/csgo.pt"
+        model_path = absolute_paths(r"YOLOmodels/csgo.pt")
     elif which_game == "Valorant":
-        model_path = r"YOLOmodels/valorant.pt"
+        model_path = absolute_paths(r"YOLOmodels/valorant.pt")
     elif which_game == "Overwatch":
         threshold = 0.45
-        model_path = r"YOLOmodels/overwatch.pt"
+        model_path = absolute_paths(r"YOLOmodels/overwatch.pt")
     elif which_game == "Minecraft (PVP server)":
-        model_path = r"YOLOmodels/minecraft.pt"
+        model_path = absolute_paths(r"YOLOmodels/minecraft.pt")
     else:
         amount_frames_to_skip = int((fps * 40) / 60)
         threshold = 0.5
         if which_game == "Rocket League":
             threshold = 0.54
         if which_game == "Rainbow Six Siege":
-            threshold = 0.64
+            threshold = 0.65
         read_screen_bool = True
     model = YOLO(model_path)
 
@@ -138,10 +142,10 @@ def auto_game_montage(*args):
         def read_screen():
             # Finding the directory for the proper resolution of the template image (480,720,1080,etc folders)
             templates = []
-            specified_res_dir = rf"template_matching_resolutions\{str(frame_height)}p"
+            specified_res_dir = absolute_paths(rf"template_matching_resolutions/{str(frame_height)}p")
             for filename in os.listdir(specified_res_dir):
                 if which_game.replace(" ", "") in filename:
-                    templates.append(cv2.imread(specified_res_dir + rf"\{filename}", 0))
+                    templates.append(cv2.imread(specified_res_dir + rf"/{filename}", 0))
 
             frame_gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
             global detection_already_found
@@ -189,7 +193,7 @@ def auto_game_montage(*args):
                             target_clip = target_clip.fx(vfx.colorx, 1.5)
                             target_clip = target_clip.speedx(0.6)
                             target_audio = target_clip.audio
-                            background_sfx = AudioFileClip("editing_sfx/bass_boosted_fixed.mp3")
+                            background_sfx = AudioFileClip(absolute_paths("editing_sfx/bass_boosted_fixed.mp3"))
                             background_sfx = background_sfx.audio_fadeout(0.2)
                             try:
                                 adjusted_audio_clip = target_audio.volumex(0.5)
@@ -268,7 +272,7 @@ def auto_game_montage(*args):
                                 target_clip = target_clip.speedx(0.6)
                                 target_audio = target_clip.audio
                                 adjusted_audio_clip = target_audio.volumex(0.5)
-                                background_sfx = AudioFileClip("editing_sfx/bass_boosted_fixed.mp3")
+                                background_sfx = AudioFileClip(absolute_paths("editing_sfx/bass_boosted_fixed.mp3"))
                                 background_sfx = background_sfx.audio_fadeout(0.2)
                                 combined_audio = CompositeAudioClip([adjusted_audio_clip, background_sfx])
                                 target_clip = target_clip.set_audio(combined_audio)
@@ -336,5 +340,6 @@ def auto_game_montage(*args):
         final_clip.write_videofile(f"{args[1]}/{output_filename}_output.mp4", codec='libx264', audio_codec='aac',
                                    logger=None)
         print(f"Program: All done! The edited video can be found here: {args[1]}/{output_filename}_output.mp4")
-    except:
+    except Exception as e:
+        print(e)
         print(f"\nModel: No detections found of the game {which_game} in the selected video.")
