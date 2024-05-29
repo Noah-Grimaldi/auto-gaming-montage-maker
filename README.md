@@ -112,7 +112,10 @@ For [video_transcribe_audio.py](packagefiles/video_transcribe_audio.py):
 
 ## Dependencies
 - Windows Instruction: [Download Python 3.10](https://www.python.org/ftp/python/3.10.8/python-3.10.8-amd64.exe), then download [FFMPEG](https://community.chocolatey.org/packages/ffmpeg).
-- MAC Instruction: Install [Homebrew](https://brew.sh/), then if you already have python 3.10 downloaded, uninstall it. First do `brew install python-tk@3.11' then do `brew install python@3.10` then install FFMPEG, `brew install ffmpeg`
+- MAC Instruction: Install [Homebrew](https://brew.sh/), then if you already have python 3.10 downloaded, uninstall it.
+  First do `brew install python-tk@3.11`
+  Then do `brew install python@3.10`
+  Then install FFMPEG `brew install ffmpeg`
 - Linux Instruction: Install [Python 3.10](https://www.knowledgehut.com/blog/data-science/install-python-on-ubuntu) and [FFMPEG](https://phoenixnap.com/kb/install-ffmpeg-ubuntu)
 - **After** you've activated the venv on your specified platform, run the command: `pip install -r requirements.txt`
 
