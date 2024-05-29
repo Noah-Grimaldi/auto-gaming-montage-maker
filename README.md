@@ -16,6 +16,14 @@ This is a tool for editors that automatically edits video game videos/clips pert
 - Right-click or control-click the "editor_gui" unix executable file and hit open, then confirm open.
 - It should install Homebrew and FFMPEG if you don't have them on your system.
 
+**Linux:**
+- Download the compressed agmsetuplinux.tar.gz folder [here](https://drive.google.com/file/d/1EBKRwK3fVsPy5I71j_wzTSI35GjahjyB/view?usp=sharing).
+- Then navigate to where you downloaded it and uncompress it with this command:
+`tar -xzvf agmsetuplinux.tar.gz`
+- Navigate inside the uncompressed directory and run these commands to run the executable:
+`chmod +x editor_gui`
+`./editor_gui`
+
 ## Examples/Tutorial
 - [Tutorial](https://youtu.be/mjZggkEld50?si=kVlOT_8-KW_prgbp)
 - [Fortnite Example](https://youtu.be/mjZggkEld50?si=kVlOT_8-KW_prgbp&t=315)
