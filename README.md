@@ -128,7 +128,9 @@ For [video_transcribe_audio.py](packagefiles/video_transcribe_audio.py):
   
   Then install FFMPEG `brew install ffmpeg`
   
-- Linux Instruction: Install [Python 3.10](https://www.knowledgehut.com/blog/data-science/install-python-on-ubuntu) and [FFMPEG](https://phoenixnap.com/kb/install-ffmpeg-ubuntu)
+- Linux Instruction: Install [Python 3.10](https://www.knowledgehut.com/blog/data-science/install-python-on-ubuntu) and [FFMPEG](https://phoenixnap.com/kb/install-ffmpeg-ubuntu) You may also need to install python3.10-tk:
+
+  `sudo apt-get install python3.10-tk`
 
 **After** you've activated the venv on your specified platform, run the command: `pip install -r requirements.txt`
 
