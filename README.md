@@ -49,6 +49,10 @@ This is a tool for editors that automatically edits video game videos/clips pert
 - audio types: mp3, wav, flac, ogg
 - video types: mp4, avi, mkv, mov, wmv, flv, webm
 
+## Acceptable video resolutions/fps
+- FPS: any FPS works
+- Video Resolutions: 480p (640x480), 720p (1280x720), 1080p (1920x1080), 1440p (2560x1440), 4k (3840x2160)
+
 ## Demo for Auto Gaming Montages
 ![](montagedemo.gif)
 ## Demo for Silent Portions and Automatic Captions
@@ -60,7 +64,7 @@ Clone the repository with --recurse-submodules so PySimpleGUI's older version wi
 
 `git clone --recurse-submodules https://github.com/Noah-Grimaldi/auto-gaming-montage-maker.git`
 
-Run editor_gui.py, which programmatically references the other files or [download Windows or MAC executables](https://github.com/Noah-Grimaldi/auto-gaming-montage-maker/releases/tag/v1.0.0).
+Run editor_gui.py, which programmatically references the other files or [download Windows, MAC, or Linux executables](https://github.com/Noah-Grimaldi/auto-gaming-montage-maker/releases/tag/v1.0.0).
 
 ## Table for different game's model speed and accuracy rating
 |                                 | CSGO Model    | Minecraft Model | Overwatch Model | Valorant Model | Other games (template matching) |
@@ -128,7 +132,7 @@ For [video_transcribe_audio.py](packagefiles/video_transcribe_audio.py):
   
   Then install FFMPEG `brew install ffmpeg`
   
-- Linux Instruction: Install [Python 3.10](https://www.knowledgehut.com/blog/data-science/install-python-on-ubuntu) and [FFMPEG](https://phoenixnap.com/kb/install-ffmpeg-ubuntu) You may also need to install python3.10-tk:
+- Linux Instruction: Install [Python 3.10](https://www.knowledgehut.com/blog/data-science/install-python-on-ubuntu) and [FFMPEG](https://phoenixnap.com/kb/install-ffmpeg-ubuntu) You may also need to install python3.10-tk before you install Python3.10:
 
   `sudo apt-get install python3.10-tk`
 
