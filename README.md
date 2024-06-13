@@ -8,6 +8,7 @@ This is a tool for editors that automatically edits video game videos/clips pert
 **Windows:**
 - Download the installer [here](https://github.com/Noah-Grimaldi/auto-gaming-montage-maker/releases/download/v1.0.0/agmsetupwin.exe)
 - Run the installer
+- It will give you an "Unknown Publisher" warning, simply click "more info" > "run anyway"
   
 **MAC:**
 - Download the zip folder [here](https://github.com/Noah-Grimaldi/auto-gaming-montage-maker/releases/download/v1.0.0/agmsetupmacos.zip)
