@@ -19,7 +19,7 @@ already_occured = False
 if __name__ == '__main__':
     # Pyinstaller fix because ultralytics references differently
     multiprocessing.freeze_support()
-    
+
 
 def cls():
     os.system('cls' if os.name == 'nt' else 'clear')
@@ -46,8 +46,8 @@ sg.theme('Black')
 dropdown_options4 = [("center"), ("center", "top"), ("center", "bottom"), ("left", "top"), ("right", "top"),
                      ("left", "bottom"), ("right", "bottom")]
 dropdown_options = ["tiny", "base", "small", "medium", "large"]
-dropdown_games = ["Fortnite", "MW 2019", "MW Warzone 2019", "MWII 2022", "MWIII 2023", "Apex Legends",
-                  "Rainbow Six Siege", "PUBG", "Destiny 2", "Rocket League", "CSGO", "Valorant", "Overwatch",
+dropdown_games = ["Fortnite", "MW 2019", "MWII 2022", "MWIII 2023", "Apex Legends",
+                  "Rainbow Six Siege", "PUBG Mobile", "PUBG PC", "Destiny 2", "Rocket League", "CSGO", "Valorant", "Overwatch",
                   "Minecraft (PVP server)"]
 # Define the layout of the GUI
 auto_montage_layout = [
@@ -77,7 +77,8 @@ auto_montage_layout = [
              tooltip="You can increase model speed by skipping frames in the video, by default this skips by 2 frames\ndepending on your video's FPS, "),
      sg.Slider(range=(2, 100), default_value=2, orientation='h', size=(23, 10), trough_color="white",
                border_width=6,
-               key='skip_frames', tooltip="This is in frames, you have the ability to skip 2-625 frames within the video")],
+               key='skip_frames',
+               tooltip="This is in frames, you have the ability to skip 2-625 frames within the video")],
 ]
 auto_captions_layout = [
     [sg.Text("Select model size: \n(smaller the model, quicker the export)"),
@@ -91,7 +92,8 @@ auto_captions_layout = [
              readonly=True, text_color='black',
              tooltip="this is the text color that will overlay\non your edited video")],
     [sg.Text("Font:     "),
-     sg.Drop(values=retrieve_available_fonts(), background_color='white', key="dropdown_option3", default_value="choose a font",
+     sg.Drop(values=retrieve_available_fonts(), background_color='white', key="dropdown_option3",
+             default_value="choose a font",
              size=(21, 1),
              readonly=True, text_color='black',
              tooltip="this is the font style for the overlay text")],
@@ -117,7 +119,8 @@ layout = [
     [sg.InputText(key="video_file", disabled=True, default_text=r"Select one or multiple video file(s) to edit *",
                   tooltip="The video(s) you want to be edited, make sure file names don't have ';' in them",
                   text_color='black'),
-     sg.FilesBrowse()], # This file specification code will only work as an argument on Windows systems: file_types=(("Video Files", "*.mp4;*.avi;*.mkv;*.mov;*.wmv;*.flv;*.webm"),)
+     sg.FilesBrowse()],
+    # This file specification code will only work as an argument on Windows systems: file_types=(("Video Files", "*.mp4;*.avi;*.mkv;*.mov;*.wmv;*.flv;*.webm"),)
     [sg.InputText(key="output_folder", default_text=r"Select an output folder", disabled=True,
                   tooltip="The folder where you want the edited video to export", text_color='black'),
      sg.FolderBrowse()],
@@ -244,7 +247,8 @@ while True:
                     cls()
                     run_thread = threading.Thread(target=auto_game_montage, args=(
                         values["video_file"], output2, values['dropdown_audio'], values['music_volume'],
-                        values['which_game'], int(values['skip_frames']), values['effects_bool'], values['title_text'][:12]))
+                        values['which_game'], int(values['skip_frames']), values['effects_bool'],
+                        values['title_text'][:12]))
                     run_thread.start()
                 except Exception as e:
                     sg.popup(e, title="No highlights detected", icon="ERROR")

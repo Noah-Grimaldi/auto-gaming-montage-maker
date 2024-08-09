@@ -11,6 +11,9 @@ from moviepy.editor import VideoFileClip, ImageClip, ColorClip, AudioFileClip, C
     concatenate_audioclips
 from moviepy.video.compositing.concatenate import concatenate_videoclips
 from PIL import Image, ImageDraw, ImageFont
+from rich.console import Console
+
+console = Console()
 
 nothing_or_something = 'nothing'
 start = 0
@@ -23,6 +26,7 @@ threshold = 0.5
 amount_frames_to_skip = 2
 detections = 0
 detection_already_found = False
+regular_editing = 0
 
 
 def absolute_paths(specifiedpath):
@@ -52,8 +56,34 @@ def create_intro_text_clip(text, vid_width, vid_height):
     return intro_clip
 
 
+def replace_non_white_with_black(image):
+    # Define the white color range
+    lower_bound = np.array([217, 217, 217])  # 240 remember
+    upper_bound = np.array([255, 255, 255])
+
+    # Create a mask where pixels are within the defined range
+    mask = np.all((image >= lower_bound) & (image <= upper_bound), axis=-1)
+
+    # Replace non-white pixels with black
+    image[~mask] = [0, 0, 0]
+
+    return image
+
+
+def crop_the_frame(height, width, frame, regular_check):
+    rl_width = 5
+    if regular_check == 2:
+        regular_check = 0
+        rl_width = 3
+    start_y = ((height // 2) + int((200 * height) / 1440)) * regular_check
+    end_y = start_y + (height // 4) - (int((100 * height) / 1440)) * regular_check
+    start_x = width // 3
+    end_x = start_x + (width // rl_width)
+    return frame[start_y:end_y, start_x:end_x]
+
+
 def auto_game_montage(*args):
-    global path_to_video, amount_frames_to_skip, detections, start, end, read_screen_bool, model_path, threshold
+    global path_to_video, amount_frames_to_skip, detections, start, end, read_screen_bool, model_path, threshold, regular_editing
     music_volume = args[3] / 100
     if args[7] == '':  # args[7] is the intro text that the user typed from the GUI (or none)
         no_intro_text = True
@@ -99,7 +129,7 @@ def auto_game_montage(*args):
               f"640x480, 1280x720, 1920x1080, 2560x1440, 3840x2160")
         return
 
-    cap.set(cv2.CAP_PROP_POS_MSEC, 3000)  # start at 3 seconds due to hardcoded edits
+    cap.set(cv2.CAP_PROP_POS_MSEC, 3100)  # start at 3 seconds due to hardcoded edits
     ret, frame = cap.read()
     track_frames = []
     clips_list = []
@@ -118,17 +148,48 @@ def auto_game_montage(*args):
     elif which_game == "Minecraft (PVP server)":
         model_path = absolute_paths(r"YOLOmodels/minecraft.pt")
     else:
-        amount_frames_to_skip = int((fps * 40) / 60)
-        threshold = 0.5
+        amount_frames_to_skip = int((fps * 25) / 60)
+        threshold = 0.6
+        regular_editing = 0
+        if which_game == "Fortnite":
+            threshold = 0.2
+            regular_editing = 1
+        if which_game == "MW 2019" or which_game == "PUBG PC":
+            threshold = 0.7
         if which_game == "Rocket League":
-            threshold = 0.54
-        if which_game == "Rainbow Six Siege":
-            threshold = 0.65
+            threshold = 0.46
+            regular_editing = 2
         read_screen_bool = True
     model = YOLO(model_path)
-
     original_clip = VideoFileClip(path_to_video)  # TODO: user should be able to adjust this 1
     audio_clip = AudioFileClip(music_choice)  # TODO: user should be able to adjust this 1
+    print(
+        "------------------------------------------------------------------------------------------------------------")
+    console.print(
+        "             THIS QUOTE COMES FROM JESUS, READ IT WHILE YOU WAIT FOR THE PROGRAM TO FINISH                    ",
+        style="bold red")
+    print("------------------------------------------------------------------------------------------------------------"
+          "\nDo not let your hearts be troubled. You believe in God; believe also in me. "
+          "\nMy Father’s house has many rooms; if that were not so, would I have told you that "
+          "\nI am going there to prepare a place for you? And if I go and prepare a place for "
+          "\nyou, I will come back and take you to be with me that you also may be where I am. "
+          "\nYou know the way to the place where I am going."
+          "\nThomas said to him, Lord, we don’t know where you are going, so how can we know the way?"
+          "\nJesus answered, I am the way and the truth and the life. No one comes to the Father except through me. "
+          "\nIf you really know me, you will know my Father as well. From now on, you do know him and have seen him."
+          "\nPhilip said, Lord, show us the Father and that will be enough for us."
+          "\nJesus answered: Don’t you know me, Philip, even after I have been among you such a long time? "
+          "\nAnyone who has seen me has seen the Father. How can you say, ‘Show us the Father’? "
+          "\nDon’t you believe that I am in the Father, and that the Father is in me? The words "
+          "\nI say to you I do not speak on my own authority. Rather, it is the Father, living in me, "
+          "\nwho is doing his work. Believe me when I say that I am in the Father and the Father is in me; "
+          "\nor at least believe on the evidence of the works themselves. Very truly I tell you, "
+          "\nwhoever believes in me will do the works I have been doing, and they will do even greater things than these, "
+          "\nbecause I am going to the Father. And I will do whatever you ask in my name, "
+          "\nso that the Father may be glorified in the Son. You may ask me for anything in my name, and I will do it."
+          "\n                                                  - John 14:1-14"
+          "\n-------------------------------------------------------------------------------------------------------------")
+
     while ret:  # iterating through the video frames and skipping 1 every iteration
         current_timestamp = cap.get(cv2.CAP_PROP_POS_MSEC)
         sys.stdout.flush()
@@ -145,16 +206,23 @@ def auto_game_montage(*args):
             specified_res_dir = absolute_paths(rf"template_matching_resolutions/{str(frame_height)}p")
             for filename in os.listdir(specified_res_dir):
                 if which_game.replace(" ", "") in filename:
-                    templates.append(cv2.imread(specified_res_dir + rf"/{filename}", 0))
-
-            frame_gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+                    templates.append(cv2.imread(specified_res_dir + rf"/{filename}", cv2.IMREAD_COLOR))
             global detection_already_found
             for template in templates:
                 if detection_already_found:
                     detection_already_found = False
                     break
                 # Perform template matching
-                res = cv2.matchTemplate(frame_gray, template, cv2.TM_CCOEFF_NORMED)
+                if regular_editing == 0 or regular_editing == 2:
+                    edited_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+                    template = cv2.cvtColor(template, cv2.COLOR_BGRA2BGR)
+                    template = cv2.cvtColor(template, cv2.COLOR_BGR2GRAY)
+                    if regular_editing == 2:
+                        edited_frame = crop_the_frame(frame_height, frame_width, edited_frame, regular_editing)
+                else:
+                    edited_frame = crop_the_frame(frame_height, frame_width, frame, regular_editing)
+                    edited_frame = replace_non_white_with_black(edited_frame)
+                res = cv2.matchTemplate(edited_frame, template, cv2.TM_CCOEFF_NORMED)
                 loc = np.where(res >= threshold)
 
                 stop_running = False
@@ -163,7 +231,7 @@ def auto_game_montage(*args):
                 for pt in zip(*loc[::-1]):
                     global nothing_or_something, start, end, exception1, exception2, detections
                     nothing_or_something = 'something'
-                    for item in track_frames[-2:]:
+                    for item in track_frames[-3:]:
                         if item == 'something':
                             stop_running = True
                             break
